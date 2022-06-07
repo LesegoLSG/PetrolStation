@@ -28,7 +28,13 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 	@Override
 	public T get(Integer i) {
 		// TODO Auto-generated method stub
-		return null;
+		if(i >= size){
+			throw new ArrayListException("Index greater than size");
+		}
+		if(i < 0){
+			throw new ArrayListException("Index out of range");
+		}
+		return array[i];
 	}
 
 	@Override
@@ -59,6 +65,18 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean hasNext() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public T next() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
