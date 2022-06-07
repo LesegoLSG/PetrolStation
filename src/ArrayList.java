@@ -40,6 +40,14 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 	@Override
 	public void set(Integer i, T e) {
 		// TODO Auto-generated method stub
+		if(i >= size){
+			throw new ArrayListException("Index greater than size");
+		}
+		if(i < 0){
+			throw new ArrayListException("Index out of range");
+		}
+		
+		array[i] = e;
 		
 	}
 
