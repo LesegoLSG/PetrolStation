@@ -2,6 +2,28 @@ import java.util.Iterator;
 
 
 public class ArrayList<T> implements List<T>, Iterator<T> {
+	
+	private T[] array;
+	private Integer size;
+	private Integer arrayLength;
+	private Integer strategy;
+	
+	public ArrayList(){
+		this(1);
+	}
+	
+	public ArrayList(Integer strategy){
+		this.strategy = strategy;
+		this.arrayLength = 1;
+		this.array = createArray(this.arrayLength);
+		this.size = 0;
+	}
+	private T[] createArray(int size) {
+		// TODO Auto-generated method stub
+		Object[] objArray = new Object[size];
+		
+		return (T[])objArray;
+	}
 
 	@Override
 	public T get(Integer i) {
