@@ -85,13 +85,13 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 	@Override
 	public Integer size() {
 		// TODO Auto-generated method stub
-		return null;
+		return size;
 	}
 
 	@Override
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	@Override
@@ -135,6 +135,18 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 	
 	public Iterator<T> iterator(){
 		return new ArrayListIterator<>(this);
+	}
+	
+	public String toString(){
+		String str = "[";
+		for(int i=0;i<size-1;i++){
+			str += array[i].toString()+",";
+		}
+		if(size>0){
+			str += array[size -1];
+		}
+		str +="]";
+		return str;
 	}
 
 }
