@@ -1,11 +1,14 @@
 import java.io.File;
 
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.EOFException;
 import java.util.Scanner;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 public class Main {
 	
@@ -41,8 +44,7 @@ public class Main {
 	public static PetrolStation calculateClosestPetrolStation(ArrayList<PetrolStation> list, GPSPoint currentLocation){
 		PetrolStation petStation = null;
 		double closeLoc = list.get(0).getLocation().calculateDistance(currentLocation);
-		
-		for(PetrolStation pStation : list ){
+		for(PetrolStation pStation : list){
 			double mini = pStation.getLocation().calculateDistance(currentLocation);
 			if(mini < closeLoc){
 				closeLoc = mini;
