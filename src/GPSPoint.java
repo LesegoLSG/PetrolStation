@@ -1,13 +1,24 @@
 
 import java.io.Serializable;
 
-
+/**
+ * 
+ * @author Mhlongo L
+ *
+ */
+@SuppressWarnings("serial")
 public class GPSPoint implements Serializable{
+	
 	double longitude;
 	double latitude;
 	
 	double longitudea;
 	
+	/**
+	 * The constructor
+	 * @param longitude
+	 * @param latitude
+	 */
 	public GPSPoint(double longitude,double latitude){
 		this.longitude = longitude;
 		this.latitude = latitude;
@@ -28,7 +39,11 @@ public class GPSPoint implements Serializable{
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
-	
+	/**
+	 * Method that calculates the distance from your location to the nearest petrol station
+	 * @param otherPoint - Your current location
+	 * @return distance
+	 */
 	public double calculateDistance(GPSPoint otherPoint){
 		double deltaLat = Math.toRadians(this.latitude - otherPoint.latitude);
 		double deltaLong = Math.toRadians(this.longitude - otherPoint.longitude);
@@ -38,7 +53,9 @@ public class GPSPoint implements Serializable{
 		double b = 2* Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
 		return MARSRADIUS*b;
 	}
-	
+	/**
+	 * overridden toString method
+	 */
 	public String toString(){
 		String str = "{";
 		str += this.longitude + "," + this.latitude +"}";

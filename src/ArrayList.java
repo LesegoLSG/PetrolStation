@@ -1,6 +1,10 @@
 import java.util.Iterator;
 
-
+/**
+ * 
+ * @author Mhlongo L
+ *
+ */
 public class ArrayList<T> implements List<T>, Iterator<T> {
 	
 	private T[] array;
@@ -8,23 +12,36 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 	private Integer arrayLength;
 	private Integer strategy;
 	
+	//The default constructor
 	public ArrayList(){
 		this(1);
 	}
-	
+	/*
+	 * The overloaded constructor for creating an arrayList
+	 * @param strategy
+	 */
 	public ArrayList(Integer strategy){
 		this.strategy = strategy;
 		this.arrayLength = 1;
 		this.array = createArray(this.arrayLength);
 		this.size = 0;
 	}
+	
+	/*
+	 * A helper method for creating the underlying array
+	 * @param size - size of an array
+	 */
 	private T[] createArray(int size) {
 		// TODO Auto-generated method stub
 		Object[] objArray = new Object[size];
 		
 		return (T[])objArray;
 	}
-
+	/**
+	 * The method for retrieving the element from the arrayList
+	 * 
+	 * @param the index to retrieve from
+	 */
 	@Override
 	public T get(Integer i) {
 		// TODO Auto-generated method stub
@@ -36,7 +53,12 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 		}
 		return array[i];
 	}
-
+	/**
+	 * The method for replacing an element in the ArrayList
+	 * 
+	 * @param i-index
+	 * @param e-element
+	 */
 	@Override
 	public void set(Integer i, T e) {
 		// TODO Auto-generated method stub
@@ -50,7 +72,12 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 		array[i] = e;
 		
 	}
-
+	/**
+	 * The method for adding en element to the ArrayList
+	 * 
+	 * @param i - index for where the new element needs to be added
+	 * @param e - element
+	 */
 	@Override
 	public void add(Integer i, T e) {
 		// TODO Auto-generated method stub
@@ -67,6 +94,11 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 		size++;
 	}
 
+	/**
+	 * The method for removing an element from the ArrayList
+	 * 
+	 * @param i - index of the element for removal
+	 */
 	@Override
 	public T remove(Integer i) {
 		// TODO Auto-generated method stub
@@ -81,13 +113,17 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 		
 		return removedElements;
 	}
-
+	/**
+	 * The auxiliary method to determine the size of the ArrayList
+	 */
 	@Override
 	public Integer size() {
 		// TODO Auto-generated method stub
 		return size;
 	}
-
+	/**
+	 * The auxiliary method to check if the list is empty
+	 */
 	@Override
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
@@ -105,7 +141,10 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	/**
+	 * The method creates a new array thta depends on the strategy
+	 * (1 for incremental and 2 for doubling)
+	 */
 	private void expandArray(){
 		int length = arrayLength;
 		if(strategy ==1){
@@ -120,23 +159,35 @@ public class ArrayList<T> implements List<T>, Iterator<T> {
 		
 		array = newArray;
 	}
-	
+	/**
+	 * The method for shifting all elements up by one to the right
+	 * @param position - index from where to shift
+	 */
 	private void shiftElementsRight(Integer position){
 		for(int i=this.size;i>=position;i--){
 			this.array[i+1]=this.array[i];
 		}
 	}
-	
+	/**
+	 * The method for shifting all elements up by one to the left
+	 * @param position - index from where to shift
+	 */
 	private void shiftElementsLeft(Integer position){
 		for(int i=position; i<size;i++){
 			this.array[i] = this.array[i+1];
 		}
 	}
-	
+	/**
+	 * The overridden iterator method
+	 * @return Iterator
+	 */
 	public Iterator<T> iterator(){
 		return new ArrayListIterator<>(this);
 	}
-	
+	/**
+	 * The overridden toString method
+	 * @return String
+	 */
 	public String toString(){
 		String str = "[";
 		for(int i=0;i<size-1;i++){

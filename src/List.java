@@ -1,4 +1,9 @@
-
+/**
+ * 
+ * @author Mhlongo L
+ *
+ * Interface with declared method
+ */
 public interface List<T> {
 	public T get(Integer i);
 	public void set(Integer i, T e);

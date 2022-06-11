@@ -1,4 +1,9 @@
 
+/**
+ * 
+ * @author Mhlongo L
+ *
+ */
 public class ArrayListException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;

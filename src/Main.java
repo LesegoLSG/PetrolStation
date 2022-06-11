@@ -9,9 +9,18 @@ import java.io.EOFException;
 import java.util.Scanner;
 import java.util.Iterator;
 import java.util.ArrayList;
-
+	/**
+	 * 
+	 * @author Mhlongo L
+	 *
+	 */
 public class Main {
 	
+	/*
+	 * Reads all the current Petrol Stations from the local database (binary file of a collectiom of Petrol Stations)
+	 * 
+	 * @param The path to the database
+	 */
 	public static ArrayList<PetrolStation> readPetrolStationsFromDB(String path){
 		ArrayList<PetrolStation> petrolStations = new ArrayList<PetrolStation>();
 		File dbfile = new File(path);
@@ -41,6 +50,13 @@ public class Main {
 		return petrolStations;
 	}
 	
+	/*
+	 * Calculates the closest petrol Station to your current location
+	 * 
+	 * @param list - the list of petrol stations
+	 * @param currentLocation - Your current location
+	 */
+	
 	public static PetrolStation calculateClosestPetrolStation(ArrayList<PetrolStation> list, GPSPoint currentLocation){
 		PetrolStation petStation = null;
 		double closeLoc = list.get(0).getLocation().calculateDistance(currentLocation);
@@ -54,7 +70,7 @@ public class Main {
 		return petStation;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		ArrayList<PetrolStation> list = readPetrolStationsFromDB("petrolstations.db");
 		
 		PetrolStation p1 = new PetrolStation("Shell Boskruin Motors","Features: Vida e cafe; Debonnairs Pizza", new GPSPoint(27.959148,-2091459));
